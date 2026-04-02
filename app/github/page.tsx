@@ -3,9 +3,9 @@ import { Github, ExternalLink, GitBranch, Star, Code2, BookOpen } from 'lucide-r
 export default function GithubPage() {
   const repos = [
     {
-      name: 'person-app',
+      name: 'person_app',
       desc: 'Full-stack Person CRUD application built with Next.js 15, Prisma, and PostgreSQL.',
-      url: 'https://github.com/Pearlshaline/person-app',
+      url: 'https://github.com/Pearlshaline/person_app',
       tags: ['Next.js', 'Prisma', 'PostgreSQL', 'TypeScript'],
       primary: true,
     },
@@ -45,11 +45,11 @@ export default function GithubPage() {
             </div>
             <div>
               <p className="text-xs font-mono text-accent uppercase tracking-wide mb-0.5">Primary Repository</p>
-              <h2 className="font-display font-semibold text-lg">person-app</h2>
+              <h2 className="font-display font-semibold text-lg">person_app</h2>
             </div>
           </div>
           <a
-            href="https://github.com/Pearlshaline/person-app"
+            href="https://github.com/Pearlshaline/person_app"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-4 py-2 rounded-xl bg-accent text-white text-sm font-medium hover:opacity-90 transition-all flex-shrink-0"
@@ -98,54 +98,14 @@ export default function GithubPage() {
         </div>
       </div>
 
-      {/* All repos */}
-      <div className="mb-8">
-        <h2 className="font-display text-xl font-semibold mb-5 flex items-center gap-2">
-          <BookOpen className="w-5 h-5 text-accent" /> All Repositories
-        </h2>
-        <div className="space-y-4">
-          {repos.map((repo) => (
-            <div key={repo.name} className="p-5 rounded-2xl bg-card-surface border border-custom card-hover">
-              <div className="flex items-start justify-between gap-4 mb-2">
-                <div className="flex items-center gap-2">
-                  <GitBranch className="w-4 h-4 text-accent flex-shrink-0" />
-                  <h3 className="font-display font-semibold text-sm">{repo.name}</h3>
-                  {repo.primary && (
-                    <span className="text-xs font-mono px-2 py-0.5 rounded-full bg-accent/10 border border-accent/30 text-accent">
-                      This App
-                    </span>
-                  )}
-                </div>
-                <a
-                  href={repo.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs font-mono text-muted-custom hover:text-accent transition-colors flex-shrink-0"
-                >
-                  <ExternalLink className="w-3.5 h-3.5" />
-                  View
-                </a>
-              </div>
-              <p className="text-sm text-muted-custom mb-3 leading-relaxed">{repo.desc}</p>
-              <div className="flex flex-wrap gap-1.5">
-                {repo.tags.map((tag) => (
-                  <span key={tag} className="text-xs font-mono px-2 py-0.5 rounded bg-muted-surface border border-custom text-muted-custom">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Setup instructions */}
       <div className="p-6 rounded-2xl bg-card-surface border border-custom">
         <h2 className="font-display text-xl font-semibold mb-4">How to Run Locally</h2>
         <div className="space-y-3">
           {[
-            { step: '1', cmd: 'git clone https://github.com/Pearlshaline/person-app.git', desc: 'Clone the repository' },
-            { step: '2', cmd: 'cd person-app && npm install', desc: 'Install dependencies' },
+            { step: '1', cmd: 'git clone https://github.com/Pearlshaline/person_app.git', desc: 'Clone the repository' },
+            { step: '2', cmd: 'cd person_app && npm install', desc: 'Install dependencies' },
             { step: '3', cmd: 'cp .env.example .env  # Add your DATABASE_URL', desc: 'Set up environment variables' },
             { step: '4', cmd: 'npx prisma migrate dev && npx prisma db seed', desc: 'Set up database and seed data' },
             { step: '5', cmd: 'npm run dev', desc: 'Start the development server at localhost:3000' },
