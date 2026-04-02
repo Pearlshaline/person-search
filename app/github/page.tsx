@@ -59,10 +59,7 @@ export default function GithubPage() {
             <ExternalLink className="w-3.5 h-3.5" />
           </a>
         </div>
-        <p className="text-sm text-muted-custom mb-4 leading-relaxed">
-          Full-stack Person CRUD application built with Next.js 15, Prisma ORM, and PostgreSQL.
-          Features complete Create, Read, Update, and Delete operations with a responsive, modern UI.
-        </p>
+        
         <div className="flex flex-wrap gap-2">
           {['Next.js 15', 'TypeScript', 'Prisma', 'PostgreSQL', 'Tailwind CSS', 'Vercel'].map((tag) => (
             <span key={tag} className="text-xs font-mono px-2.5 py-1 rounded-lg bg-card-surface border border-custom text-muted-custom">
