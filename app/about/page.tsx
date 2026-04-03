@@ -1,4 +1,4 @@
-import { Layers, Database, Cpu, Globe, GitBranch, Zap } from 'lucide-react';
+import { Layers, Database, Cpu, Globe, GitBranch, Zap, Plug, Bot, ArrowRight } from 'lucide-react';
 
 export default function AboutPage() {
   const stack = [
@@ -8,6 +8,8 @@ export default function AboutPage() {
     { icon: Cpu, name: 'TypeScript', desc: 'Typed JavaScript for improved developer experience and code reliability', color: 'text-yellow-400' },
     { icon: Zap, name: 'Vercel', desc: 'Cloud deployment platform with automatic CI/CD and global CDN', color: 'text-purple-400' },
     { icon: GitBranch, name: 'GitHub', desc: 'Version control and source code management for the project', color: 'text-orange-400' },
+    { icon: Plug, name: 'MCP Protocol', desc: 'Model Context Protocol enabling Claude Desktop to perform CRUD operations via AI tools', color: 'text-pink-400' },
+    { icon: Bot, name: 'Claude Desktop', desc: 'Anthropic\'s AI assistant that connects to the MCP server to manage Person data', color: 'text-indigo-400' },
   ];
 
   const architecture = [
@@ -15,6 +17,15 @@ export default function AboutPage() {
     { step: '02', title: 'API Layer', desc: 'Next.js API Routes at /api/persons handle all HTTP methods: GET (list/read), POST (create), PUT (update), DELETE (remove). RESTful design with proper status codes.' },
     { step: '03', title: 'ORM Layer', desc: 'Prisma Client provides type-safe database access. A singleton instance is shared across API routes to prevent connection pool exhaustion in development.' },
     { step: '04', title: 'Database Layer', desc: 'PostgreSQL hosted on Neon (serverless) stores all Person records. Prisma Migrate handles schema changes and version control of the database structure.' },
+    { step: '05', title: 'MCP Server Layer', desc: 'A standalone Node.js MCP server exposes Person CRUD operations as tools. Claude Desktop connects to this server via the Model Context Protocol, enabling AI-powered database management.' },
+  ];
+
+  const mcpFlow = [
+    { from: 'You (User)', to: 'Claude Desktop', action: 'Type natural language prompt', color: 'text-blue-400' },
+    { from: 'Claude Desktop', to: 'MCP Server', action: 'Calls the matching MCP tool', color: 'text-purple-400' },
+    { from: 'MCP Server', to: 'Neon Database', action: 'Executes Prisma query', color: 'text-green-400' },
+    { from: 'Neon Database', to: 'Claude Desktop', action: 'Returns result data', color: 'text-yellow-400' },
+    { from: 'Claude Desktop', to: 'You (User)', action: 'Presents the result in chat', color: 'text-pink-400' },
   ];
 
   return (
@@ -23,8 +34,8 @@ export default function AboutPage() {
         <p className="text-xs font-mono text-accent uppercase tracking-widest mb-1">Documentation</p>
         <h1 className="font-display text-4xl font-bold mb-3">About This App</h1>
         <p className="text-muted-custom leading-relaxed">
-          A full-stack Person Management application built with modern web technologies,
-          demonstrating complete CRUD operations, database integration, and professional UI/UX design.
+          A full-stack Person Management application with MCP integration, enabling AI-powered
+          database operations through Claude Desktop alongside traditional CRUD operations.
         </p>
       </div>
 
@@ -34,12 +45,52 @@ export default function AboutPage() {
         <p className="text-sm text-muted-custom leading-relaxed mb-4">
           This Person App is a production-grade full-stack web application developed as part of a university
           coursework deliverable. It implements the complete CRUD lifecycle — Create, Read, Update, and Delete —
-          for Person records, backed by a real PostgreSQL database.
+          for Person records, backed by a real PostgreSQL database. In Week 4, it was enhanced with an
+          <span className="text-accent font-medium"> MCP (Model Context Protocol) server</span> that allows
+          Claude Desktop to manage Person data through natural language commands.
         </p>
         <p className="text-sm text-muted-custom leading-relaxed">
           Built by <span className="text-accent font-medium">Pearlshaline Gumiran</span>, 3rd Year BSIT Student
           at St. Paul University Philippines.
         </p>
+      </div>
+
+      {/* MCP Integration Architecture */}
+      <div className="mb-8">
+        <h2 className="font-display text-xl font-semibold mb-3 flex items-center gap-2">
+          <Plug className="w-5 h-5 text-accent" /> MCP Integration Architecture
+        </h2>
+        <p className="text-sm text-muted-custom mb-5 leading-relaxed">
+          The MCP server acts as a bridge between Claude Desktop and the Person database.
+          When you ask Claude to manage persons, it calls MCP tools which execute real database operations.
+        </p>
+        <div className="p-5 rounded-2xl bg-accent/5 border border-accent/20 mb-4">
+          <div className="space-y-3">
+            {mcpFlow.map(({ from, to, action, color }, i) => (
+              <div key={i} className="flex items-center gap-3">
+                <span className={`text-xs font-mono font-bold ${color} w-32 flex-shrink-0`}>{from}</span>
+                <ArrowRight className="w-4 h-4 text-muted-custom flex-shrink-0" />
+                <span className="text-xs font-mono text-muted-custom flex-1">{action}</span>
+                <ArrowRight className="w-4 h-4 text-muted-custom flex-shrink-0" />
+                <span className={`text-xs font-mono font-bold ${color} w-32 flex-shrink-0 text-right`}>{to}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-3">
+          {[
+            { label: 'MCP Tools', value: '6 tools', sub: 'list, get, create, update, delete, search' },
+            { label: 'Protocol', value: 'MCP v1', sub: 'Model Context Protocol by Anthropic' },
+            { label: 'AI Client', value: 'Claude Desktop', sub: 'Connects via stdio transport' },
+            { label: 'Data Access', value: 'Prisma ORM', sub: 'Type-safe PostgreSQL queries' },
+          ].map(({ label, value, sub }) => (
+            <div key={label} className="p-4 rounded-xl bg-card-surface border border-custom">
+              <p className="text-xs font-mono text-muted-custom uppercase tracking-wide mb-1">{label}</p>
+              <p className="font-display font-semibold text-accent">{value}</p>
+              <p className="text-xs text-muted-custom font-mono">{sub}</p>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Architecture */}
@@ -79,10 +130,10 @@ export default function AboutPage() {
         <h2 className="font-display text-xl font-semibold mb-4">CRUD Features</h2>
         <div className="grid sm:grid-cols-2 gap-3">
           {[
-            { op: 'CREATE', desc: 'Add new person via modal form with validation', method: 'POST /api/persons' },
+            { op: 'CREATE', desc: 'Add new person via modal form or MCP tool', method: 'POST /api/persons' },
             { op: 'READ', desc: 'List all persons with search/filter functionality', method: 'GET /api/persons' },
-            { op: 'UPDATE', desc: 'Edit existing person via pre-filled modal form', method: 'PUT /api/persons/:id' },
-            { op: 'DELETE', desc: 'Remove person with confirmation dialog', method: 'DELETE /api/persons/:id' },
+            { op: 'UPDATE', desc: 'Edit existing person via form or MCP tool', method: 'PUT /api/persons/:id' },
+            { op: 'DELETE', desc: 'Remove person with confirmation or via MCP', method: 'DELETE /api/persons/:id' },
           ].map(({ op, desc, method }) => (
             <div key={op} className="p-3 rounded-xl bg-card-surface border border-custom">
               <span className="text-xs font-mono text-accent font-bold">{op}</span>
