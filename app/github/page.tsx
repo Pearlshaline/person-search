@@ -10,19 +10,13 @@ export default function GithubPage() {
       primary: true,
     },
     {
-      name: 'Lab_HandsOn',
-      desc: 'Mini Twitter — a social media website where users can post tweets, follow others, and like posts.',
-      url: 'https://github.com/Pearlshaline/Lab_HandsOn',
-      tags: ['Laravel', 'MySQL', 'Tailwind CSS'],
+      name: 'person_mcp_server',
+      desc: 'MCP server that enables Claude Desktop to perform Person CRUD operations via natural language.',
+      url: 'https://github.com/Pearlshaline/person_mcp_server',
+      tags: ['MCP', 'Node.js', 'Prisma', 'TypeScript'],
       primary: false,
     },
-    {
-      name: 'activity',
-      desc: 'Movies — a movie browsing website where users can explore films, add to watchlist, and rate movies.',
-      url: 'https://github.com/Pearlshaline/activity',
-      tags: ['Laravel', 'MySQL', 'HTML'],
-      primary: false,
-    },
+    
   ];
 
   return (
