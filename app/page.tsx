@@ -90,9 +90,8 @@ export default function Home() {
     <div className="max-w-6xl mx-auto px-6 py-10">
       {/* Header */}
       <div className="mb-8">
-        <p className="text-xs font-mono text-accent uppercase tracking-widest mb-1">Person Management</p>
         <h1 className="font-display text-4xl font-bold mb-2">
-          All <span className="gradient-text">Persons</span>
+          Search <span className="gradient-text">User</span>
         </h1>
       </div>
 

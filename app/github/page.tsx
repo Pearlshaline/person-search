@@ -3,7 +3,7 @@ import { Github, ExternalLink, GitBranch, Star, Code2, BookOpen } from 'lucide-r
 export default function GithubPage() {
   const repos = [
     {
-      name: 'person_app',
+      name: 'person_search',
       desc: 'Full-stack Person CRUD application built with Next.js 15, Prisma, and PostgreSQL.',
       url: 'https://github.com/Pearlshaline/person_app',
       tags: ['Next.js', 'Prisma', 'PostgreSQL', 'TypeScript'],
@@ -22,7 +22,6 @@ export default function GithubPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
       <div className="mb-10">
-        <p className="text-xs font-mono text-accent uppercase tracking-widest mb-1">Documentation</p>
         <h1 className="font-display text-4xl font-bold mb-3">GitHub Repository</h1>
         <p className="text-muted-custom leading-relaxed">
           All source code for this project is publicly available on GitHub.
@@ -34,12 +33,10 @@ export default function GithubPage() {
       <div className="p-6 rounded-2xl bg-accent/5 border border-accent/30 mb-8">
         <div className="flex items-start justify-between gap-4 mb-4">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center">
-              <Github className="w-5 h-5 text-accent" />
-            </div>
+            
             <div>
-              <p className="text-xs font-mono text-accent uppercase tracking-wide mb-0.5">Primary Repository</p>
-              <h2 className="font-display font-semibold text-lg">person_app</h2>
+              <p className="text-xs font-mono  uppercase tracking-wide mb-0.5">Primary Repository</p>
+              <h2 className="font-display font-semibold text-lg">person-search</h2>
             </div>
           </div>
           <a
@@ -69,7 +66,7 @@ export default function GithubPage() {
       {/* GitHub profile */}
       <div className="p-6 rounded-2xl bg-card-surface border border-custom mb-8">
         <h2 className="font-display text-xl font-semibold mb-4 flex items-center gap-2">
-          <Code2 className="w-5 h-5 text-accent" /> GitHub Profile
+          GitHub Profile
         </h2>
         <div className="flex items-center justify-between gap-4">
           <div>
@@ -105,11 +102,11 @@ export default function GithubPage() {
             { step: '5', cmd: 'npm run dev', desc: 'Start the development server at localhost:3000' },
           ].map(({ step, cmd, desc }) => (
             <div key={step} className="flex gap-3 p-3 rounded-xl bg-muted-surface border border-custom">
-              <span className="w-5 h-5 rounded-full bg-accent/20 text-accent text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+              <span className="w-5 h-5 rounded-full bg-accent/20  text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
                 {step}
               </span>
               <div>
-                <code className="text-xs font-mono text-accent block mb-0.5">{cmd}</code>
+                <code className="text-xs font-mono  block mb-0.5">{cmd}</code>
                 <p className="text-xs text-muted-custom">{desc}</p>
               </div>
             </div>

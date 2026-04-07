@@ -121,18 +121,18 @@ export default function McpDemoPage() {
       user: 'List all persons in the database',
       claude: 'I\'ll use the list_persons MCP tool to fetch all records.',
       tool: 'list_persons()',
-      result: '[{ id: 7, firstName: "Maria", lastName: "Santos", email: "maria.santos@email.com", ... }]',
+      result: '[{ id: 1, firstName: "Maria", lastName: "Santos", email: "maria.santos@email.com", ... }]',
     },
     {
       user: 'Add a new person: John Doe, john@example.com, age 25, phone number +63 946 882 2314, and address Ilagan City, Isabela',
       claude: 'Creating a new person record using the create_person MCP tool.',
       tool: 'create_person({ firstName: "John", lastName: "Doe", email: "john@example.com", age: 25, phone: "+63 946 882 2314", address: "Ilagan City, Isabela" })',
-      result: '{ id: 15, firstName: "John", lastName: "Doe", email: "john@example.com", age: 25, phone: "+63 946 882 2314", address: "Ilagan City, Isabela", createdAt: "..." }',
+      result: '{ id: 6, firstName: "John", lastName: "Doe", email: "john@example.com", age: 25, phone: "+63 946 882 2314", address: "Ilagan City, Isabela", createdAt: "..." }',
     },
     {
-      user: 'Delete the person with ID 7',
+      user: 'Delete the person with ID 1',
       claude: 'I\'ll remove that record using the delete_person MCP tool.',
-      tool: 'delete_person({ id: 7 })',
+      tool: 'delete_person({ id: 1 })',
       result: '{ message: "Person deleted successfully" }',
     },
   ];
@@ -140,7 +140,6 @@ export default function McpDemoPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
       <div className="mb-10">
-        <p className="text-xs font-mono text-accent uppercase tracking-widest mb-1">Documentation</p>
         <h1 className="font-display text-4xl font-bold mb-3">MCP Demo</h1>
         <p className="text-muted-custom leading-relaxed">
           Live demonstration of MCP server CRUD operations. Each button below simulates
@@ -151,22 +150,22 @@ export default function McpDemoPage() {
       {/* How it works */}
       <div className="grid sm:grid-cols-3 gap-4 mb-8">
         {[
-          { icon: Bot, label: 'Claude Desktop', desc: 'You type a natural language request', color: 'text-purple-400' },
-          { icon: Zap, label: 'MCP Protocol', desc: 'Claude calls the right MCP tool', color: 'text-yellow-400' },
-          { icon: Database, label: 'Neon Database', desc: 'Operation executes on real data', color: 'text-green-400' },
-        ].map(({ icon: Icon, label, desc, color }) => (
-          <div key={label} className="p-4 rounded-xl bg-card-surface border border-custom text-center">
-            <Icon className={`w-6 h-6 ${color} mx-auto mb-2`} />
+          { label: 'Claude Desktop', desc: 'You type a natural language request' },
+          { label: 'MCP Protocol', desc: 'Claude calls the right MCP tool' },
+          { label: 'Neon Database', desc: 'Operation executes on real data' },
+        ].map(({ label, desc }) => (
+          <div key={label} className="p-4 rounded-xl border text-center">
             <p className="font-medium text-sm">{label}</p>
-            <p className="text-xs text-muted-custom mt-1">{desc}</p>
+            <p className="text-xs mt-1">{desc}</p>
           </div>
         ))}
       </div>
 
+
       {/* Live Demo Buttons */}
       <div className="mb-8">
         <h2 className="font-display text-xl font-semibold mb-5 flex items-center gap-2">
-          <Play className="w-5 h-5 text-accent" /> Live CRUD Demo
+           Live CRUD Demo
         </h2>
         <p className="text-sm text-muted-custom mb-4">
           Click any operation below to run it against the real database — just like the MCP server does.
@@ -238,27 +237,27 @@ export default function McpDemoPage() {
       {/* Example Claude Desktop Conversations */}
       <div className="mb-8">
         <h2 className="font-display text-xl font-semibold mb-5 flex items-center gap-2">
-          <Bot className="w-5 h-5 text-accent" /> Example Claude Desktop Conversations
+          Example Claude Desktop Conversations
         </h2>
         <div className="space-y-4">
           {exampleConversations.map((conv, i) => (
             <div key={i} className="p-5 rounded-2xl bg-card-surface border border-custom">
               <div className="space-y-3">
                 <div className="flex gap-3">
-                  <span className="text-xs font-mono px-2 py-1 rounded bg-blue-400/10 border border-blue-400/30 text-blue-400 flex-shrink-0 h-fit">USER</span>
+                  <span className="text-xs font-mono px-2 py-1 rounded  border border-gray-400/30 flex-shrink-0 h-fit">USER</span>
                   <p className="text-sm">{conv.user}</p>
                 </div>
                 <div className="flex gap-3">
-                  <span className="text-xs font-mono px-2 py-1 rounded bg-purple-400/10 border border-purple-400/30 text-purple-400 flex-shrink-0 h-fit">CLAUDE</span>
+                  <span className="text-xs font-mono px-2 py-1 rounded  border border-gray-400/30 flex-shrink-0 h-fit">CLAUDE</span>
                   <p className="text-sm text-muted-custom">{conv.claude}</p>
                 </div>
                 <div className="flex gap-3">
-                  <span className="text-xs font-mono px-2 py-1 rounded bg-yellow-400/10 border border-yellow-400/30 text-yellow-400 flex-shrink-0 h-fit">TOOL</span>
-                  <code className="text-xs font-mono text-yellow-300">{conv.tool}</code>
+                  <span className="text-xs font-mono px-2 py-1 rounded border-gray-400/30 border flex-shrink-0 h-fit">TOOL</span>
+                  <code className="text-xs font-mono text-white-300">{conv.tool}</code>
                 </div>
                 <div className="flex gap-3">
-                  <span className="text-xs font-mono px-2 py-1 rounded bg-green-400/10 border border-green-400/30 text-green-400 flex-shrink-0 h-fit">RESULT</span>
-                  <code className="text-xs font-mono text-green-300">{conv.result}</code>
+                  <span className="text-xs font-mono px-2 py-1 rounded  border border-gray-400/30flex-shrink-0 h-fit">RESULT</span>
+                  <code className="text-xs font-mono text-white-300">{conv.result}</code>
                 </div>
               </div>
             </div>

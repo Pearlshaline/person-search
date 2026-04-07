@@ -56,7 +56,7 @@ export default function McpSetupPage() {
       step: '06',
       title: 'Restart Claude Desktop',
       desc: 'Fully quit and reopen Claude Desktop. You should see the MCP tools available.',
-      code: '# Look for the hammer 🔨 icon in Claude Desktop\n# This confirms MCP tools are loaded',
+      code: '# Look for the hammer icon in Claude Desktop\n# This confirms MCP tools are loaded',
       isLink: false,
     },
   ];
@@ -80,7 +80,6 @@ export default function McpSetupPage() {
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
       <div className="mb-10">
-        <p className="text-xs font-mono text-accent uppercase tracking-widest mb-1">Documentation</p>
         <h1 className="font-display text-4xl font-bold mb-3">MCP Server Setup</h1>
         <p className="text-muted-custom leading-relaxed">
           Step-by-step guide to connect the Person CRUD MCP server to Claude Desktop,
@@ -91,37 +90,37 @@ export default function McpSetupPage() {
       {/* What is MCP */}
       <div className="p-6 rounded-2xl bg-accent/5 border border-accent/20 mb-8">
         <h2 className="font-display text-xl font-semibold mb-3 flex items-center gap-2">
-          <Plug className="w-5 h-5 text-accent" /> What is MCP?
+          What is MCP?
         </h2>
         <p className="text-sm text-muted-custom leading-relaxed mb-3">
-          <span className="text-accent font-medium">Model Context Protocol (MCP)</span> is an open standard
+          Model Context Protocol (MCP) is an open standard
           that allows AI models like Claude to connect to external tools and data sources. This MCP server
           exposes Person CRUD operations as tools that Claude Desktop can call directly.
         </p>
         <p className="text-sm text-muted-custom leading-relaxed">
-          Once configured, you can ask Claude things like <span className="text-accent font-mono text-xs">"List all persons"</span>,{' '}
-          <span className="text-accent font-mono text-xs">"Create a person named John Doe"</span>, or{' '}
-          <span className="text-accent font-mono text-xs">"Delete person with ID 7"</span> and Claude will
+          Once configured, you can ask Claude things like "List all persons",{' '}
+          "Create a person named John Doe", or{' '}
+          "Delete person with ID 1" and Claude will
           execute the database operations automatically.
         </p>
       </div>
 
       {/* Available MCP Tools */}
       <div className="mb-8">
-        <h2 className="font-display text-xl font-semibold mb-5 flex items-center gap-2">
-          <Settings className="w-5 h-5 text-accent" /> Available MCP Tools
+        <h2 className="font-display text-xl font-semibold mb-5">
+          Available MCP Tools
         </h2>
         <div className="grid sm:grid-cols-2 gap-3">
           {tools.map(({ name, desc, method }) => (
-            <div key={name} className="flex gap-3 p-4 rounded-xl bg-card-surface border border-custom">
+            <div key={name} className="flex gap-3 p-4 rounded-xl border">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-1">
-                  <code className="text-xs font-mono text-accent font-bold">{name}</code>
-                  <span className={`text-xs font-mono px-1.5 py-0.5 rounded border ${methodColors[method]}`}>
+                  <code className="text-xs font-mono font-bold">{name}</code>
+                  <span className="text-xs font-mono px-1.5 py-0.5 rounded border">
                     {method}
                   </span>
                 </div>
-                <p className="text-xs text-muted-custom">{desc}</p>
+                <p className="text-xs">{desc}</p>
               </div>
             </div>
           ))}
@@ -130,23 +129,23 @@ export default function McpSetupPage() {
 
       {/* Setup Steps */}
       <div className="mb-8">
-        <h2 className="font-display text-xl font-semibold mb-5 flex items-center gap-2">
-          <Terminal className="w-5 h-5 text-accent" /> Setup Steps
+        <h2 className="font-display text-xl font-semibold mb-5">
+          Setup Steps
         </h2>
         <div className="space-y-4">
           {steps.map((item) => (
-            <div key={item.step} className="flex gap-4 p-5 rounded-2xl bg-card-surface border border-custom">
-              <span className="font-mono text-2xl font-bold text-accent/30 flex-shrink-0">{item.step}</span>
+            <div key={item.step} className="flex gap-4 p-5 rounded-2xl border">
+              <span className="font-mono text-2xl font-bold flex-shrink-0">{item.step}</span>
               <div className="flex-1 min-w-0">
                 <h3 className="font-display font-semibold mb-1">{item.title}</h3>
-                <p className="text-sm text-muted-custom leading-relaxed mb-3">{item.desc}</p>
+                <p className="text-sm leading-relaxed mb-3">{item.desc}</p>
                 {'configPath' in item && item.configPath && (
                   <div className="mb-3 space-y-1">
-                    <p className="text-xs text-muted-custom font-mono">
-                      <span className="text-accent">Windows:</span> {item.configPath.windows}
+                    <p className="text-xs font-mono">
+                      Windows: {item.configPath.windows}
                     </p>
-                    <p className="text-xs text-muted-custom font-mono">
-                      <span className="text-accent">Mac:</span> {item.configPath.mac}
+                    <p className="text-xs font-mono">
+                      Mac: {item.configPath.mac}
                     </p>
                   </div>
                 )}
@@ -155,12 +154,12 @@ export default function McpSetupPage() {
                     href={item.code}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs font-mono text-accent underline underline-offset-2 hover:opacity-80"
+                    className="text-xs font-mono underline underline-offset-2 hover:opacity-80"
                   >
                     {item.code}
                   </a>
                 ) : (
-                  <pre className="p-3 rounded-xl bg-[rgb(var(--bg-muted))] border border-custom text-xs font-mono leading-relaxed overflow-x-auto text-green-400 whitespace-pre-wrap break-all">
+                  <pre className="p-3 rounded-xl border text-xs font-mono leading-relaxed overflow-x-auto whitespace-pre-wrap break-all">
                     {item.code}
                   </pre>
                 )}
@@ -171,11 +170,11 @@ export default function McpSetupPage() {
       </div>
 
       {/* Verify it works */}
-      <div className="p-6 rounded-2xl bg-card-surface border border-custom mb-8">
-        <h2 className="font-display text-xl font-semibold mb-4 flex items-center gap-2">
-          <CheckCircle className="w-5 h-5 text-green-400" /> Verify It Works
+      <div className="p-6 rounded-2xl border mb-8">
+        <h2 className="font-display text-xl font-semibold mb-4">
+          Verify It Works
         </h2>
-        <p className="text-sm text-muted-custom mb-4">
+        <p className="text-sm mb-4">
           After restarting Claude Desktop, test the MCP connection by typing these prompts:
         </p>
         <div className="space-y-4">
@@ -191,12 +190,12 @@ export default function McpSetupPage() {
               alt: 'Create person via MCP',
             },
             {
-              prompt: 'Get person with ID 12',
+              prompt: 'Get person with ID 2',
               image: '/screenshots/Q3.png',
               alt: 'Get person by ID via MCP',
             },
             {
-              prompt: "Update person 12's age to 21",
+              prompt: "Update person 2's age to 36",
               image: '/screenshots/Q4.png',
               alt: 'Update person via MCP',
             },
@@ -206,22 +205,22 @@ export default function McpSetupPage() {
               alt: 'Search persons via MCP',
             },
             {
-              prompt: 'Delete person with ID 7',
+              prompt: 'Delete person with ID 1',
               image: '/screenshots/Q6.png',
               alt: 'Delete person via MCP',
             },
           ].map((item, i) => (
-            <div key={i} className="rounded-xl bg-muted-surface border border-custom overflow-hidden">
+            <div key={i} className="rounded-xl border overflow-hidden">
               <div className="flex items-start gap-3 p-3">
-                <span className="w-5 h-5 rounded-full bg-accent/20 text-accent text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="w-5 h-5 rounded-full text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
                   {i + 1}
                 </span>
-                <code className="text-xs font-mono text-accent">{item.prompt}</code>
+                <code className="text-xs font-mono">{item.prompt}</code>
               </div>
               <img
                 src={item.image}
                 alt={item.alt}
-                className="w-full border-t border-custom"
+                className="w-full border-t"
               />
             </div>
           ))}
@@ -229,9 +228,9 @@ export default function McpSetupPage() {
       </div>
 
       {/* Troubleshooting */}
-      <div className="p-6 rounded-2xl bg-red-500/5 border border-red-500/20">
+      <div className="p-6 rounded-2xl bg-card-surface border border-custom mb-8">
         <h2 className="font-display text-xl font-semibold mb-4 flex items-center gap-2">
-          <AlertCircle className="w-5 h-5 text-red-400" /> Troubleshooting
+          Troubleshooting
         </h2>
         <div className="space-y-3">
           {[
@@ -241,8 +240,8 @@ export default function McpSetupPage() {
             { problem: 'Config file not found', fix: 'Create the file manually at the path shown above. Make sure the JSON is valid with no trailing commas.' },
           ].map(({ problem, fix }) => (
             <div key={problem} className="p-3 rounded-xl bg-card-surface border border-custom">
-              <p className="text-sm font-medium text-red-400 mb-1">❌ {problem}</p>
-              <p className="text-xs text-muted-custom">✅ {fix}</p>
+              <p className="text-sm font-medium text-white-400 mb-1"> {problem}</p>
+              <p className="text-xs text-muted-custom">{fix}</p>
             </div>
           ))}
         </div>

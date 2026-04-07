@@ -1,15 +1,13 @@
-import { Layers, Database, Cpu, Globe, GitBranch, Zap, Plug, Bot, ArrowRight } from 'lucide-react';
-
 export default function AboutPage() {
   const stack = [
-    { icon: Globe, name: 'Next.js 15', desc: 'React framework with App Router for server-side rendering and API routes', color: 'text-blue-400' },
-    { icon: Database, name: 'PostgreSQL + Prisma', desc: 'Relational database with Prisma ORM for type-safe database queries', color: 'text-green-400' },
-    { icon: Layers, name: 'Tailwind CSS', desc: 'Utility-first CSS framework for rapid, responsive UI development', color: 'text-cyan-400' },
-    { icon: Cpu, name: 'TypeScript', desc: 'Typed JavaScript for improved developer experience and code reliability', color: 'text-yellow-400' },
-    { icon: Zap, name: 'Vercel', desc: 'Cloud deployment platform with automatic CI/CD and global CDN', color: 'text-purple-400' },
-    { icon: GitBranch, name: 'GitHub', desc: 'Version control and source code management for the project', color: 'text-orange-400' },
-    { icon: Plug, name: 'MCP Protocol', desc: 'Model Context Protocol enabling Claude Desktop to perform CRUD operations via AI tools', color: 'text-pink-400' },
-    { icon: Bot, name: 'Claude Desktop', desc: 'Anthropic\'s AI assistant that connects to the MCP server to manage Person data', color: 'text-indigo-400' },
+    { name: 'Next.js 15', desc: 'React framework with App Router for server-side rendering and API routes' },
+    { name: 'PostgreSQL + Prisma', desc: 'Relational database with Prisma ORM for type-safe database queries' },
+    { name: 'Tailwind CSS', desc: 'Utility-first CSS framework for rapid, responsive UI development' },
+    { name: 'TypeScript', desc: 'Typed JavaScript for improved developer experience and code reliability' },
+    { name: 'Vercel', desc: 'Cloud deployment platform with automatic CI/CD and global CDN' },
+    { name: 'GitHub', desc: 'Version control and source code management for the project' },
+    { name: 'MCP Protocol', desc: 'Model Context Protocol enabling Claude Desktop to perform CRUD operations via AI tools' },
+    { name: 'Claude Desktop', desc: 'Anthropic\'s AI assistant that connects to the MCP server to manage Person data' },
   ];
 
   const architecture = [
@@ -21,21 +19,21 @@ export default function AboutPage() {
   ];
 
   const mcpFlow = [
-    { from: 'You (User)', to: 'Claude Desktop', action: 'Type natural language prompt', color: 'text-blue-400' },
-    { from: 'Claude Desktop', to: 'MCP Server', action: 'Calls the matching MCP tool', color: 'text-purple-400' },
-    { from: 'MCP Server', to: 'Neon Database', action: 'Executes Prisma query', color: 'text-green-400' },
-    { from: 'Neon Database', to: 'Claude Desktop', action: 'Returns result data', color: 'text-yellow-400' },
-    { from: 'Claude Desktop', to: 'You (User)', action: 'Presents the result in chat', color: 'text-pink-400' },
+    { from: 'You (User)', to: 'Claude Desktop', action: 'Type natural language prompt' },
+    { from: 'Claude Desktop', to: 'MCP Server', action: 'Calls the matching MCP tool' },
+    { from: 'MCP Server', to: 'Neon Database', action: 'Executes Prisma query' },
+    { from: 'Neon Database', to: 'Claude Desktop', action: 'Returns result data' },
+    { from: 'Claude Desktop', to: 'You (User)', action: 'Presents the result in chat' },
   ];
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-10">
+      {/* Header */}
       <div className="mb-10">
-        <p className="text-xs font-mono text-accent uppercase tracking-widest mb-1">Documentation</p>
-        <h1 className="font-display text-4xl font-bold mb-3">About This App</h1>
+        <h1 className="font-display text-4xl font-bold mb-3">About Person Search</h1>
         <p className="text-muted-custom leading-relaxed">
-          A full-stack Person Management application with MCP integration, enabling AI-powered
-          database operations through Claude Desktop alongside traditional CRUD operations.
+          Person Search is a full-stack application with MCP integration, enabling AI-powered
+          database operations through Claude Desktop alongside traditional CRUD functionality.
         </p>
       </div>
 
@@ -43,36 +41,31 @@ export default function AboutPage() {
       <div className="p-6 rounded-2xl bg-card-surface border border-custom mb-8">
         <h2 className="font-display text-xl font-semibold mb-3">App Overview</h2>
         <p className="text-sm text-muted-custom leading-relaxed mb-4">
-          This Person App is a production-grade full-stack web application developed as part of a university
-          coursework deliverable. It implements the complete CRUD lifecycle — Create, Read, Update, and Delete —
-          for Person records, backed by a real PostgreSQL database. In Week 4, it was enhanced with an
-          <span className="text-accent font-medium"> MCP (Model Context Protocol) server</span> that allows
-          Claude Desktop to manage Person data through natural language commands.
+          Person Search is a production-grade full-stack web application developed as part of a university
+          coursework project. It supports the complete CRUD lifecycle — Create, Read, Update, Delete — 
+          for Person records, backed by a PostgreSQL database. Later, it was enhanced with an
+          <span className=" font-medium"> MCP (Model Context Protocol) server</span> allowing
+          Claude Desktop to manage Person data using natural language.
         </p>
         <p className="text-sm text-muted-custom leading-relaxed">
-          Built by <span className="text-accent font-medium">Pearlshaline Gumiran</span>, 3rd Year BSIT Student
+          Built by <span className="font-medium">Pearlshaline Gumiran</span>, 3rd Year BSIT Student
           at St. Paul University Philippines.
         </p>
       </div>
 
-      {/* MCP Integration Architecture */}
+      {/* MCP Integration */}
       <div className="mb-8">
-        <h2 className="font-display text-xl font-semibold mb-3 flex items-center gap-2">
-          <Plug className="w-5 h-5 text-accent" /> MCP Integration Architecture
-        </h2>
+        <h2 className="font-display text-xl font-semibold mb-3">MCP Integration Architecture</h2>
         <p className="text-sm text-muted-custom mb-5 leading-relaxed">
-          The MCP server acts as a bridge between Claude Desktop and the Person database.
-          When you ask Claude to manage persons, it calls MCP tools which execute real database operations.
+          The MCP server bridges Claude Desktop and the Person database. When you ask Claude to manage persons, it calls MCP tools which perform real database operations.
         </p>
         <div className="p-5 rounded-2xl bg-accent/5 border border-accent/20 mb-4">
           <div className="space-y-3">
-            {mcpFlow.map(({ from, to, action, color }, i) => (
+            {mcpFlow.map(({ from, to, action }, i) => (
               <div key={i} className="flex items-center gap-3">
-                <span className={`text-xs font-mono font-bold ${color} w-32 flex-shrink-0`}>{from}</span>
-                <ArrowRight className="w-4 h-4 text-muted-custom flex-shrink-0" />
+                <span className="text-xs font-mono font-bold w-32 flex-shrink-0">{from}</span>
                 <span className="text-xs font-mono text-muted-custom flex-1">{action}</span>
-                <ArrowRight className="w-4 h-4 text-muted-custom flex-shrink-0" />
-                <span className={`text-xs font-mono font-bold ${color} w-32 flex-shrink-0 text-right`}>{to}</span>
+                <span className="text-xs font-mono font-bold w-32 flex-shrink-0 text-right">{to}</span>
               </div>
             ))}
           </div>
@@ -86,7 +79,7 @@ export default function AboutPage() {
           ].map(({ label, value, sub }) => (
             <div key={label} className="p-4 rounded-xl bg-card-surface border border-custom">
               <p className="text-xs font-mono text-muted-custom uppercase tracking-wide mb-1">{label}</p>
-              <p className="font-display font-semibold text-accent">{value}</p>
+              <p className="font-display font-semibold ">{value}</p>
               <p className="text-xs text-muted-custom font-mono">{sub}</p>
             </div>
           ))}
@@ -113,13 +106,10 @@ export default function AboutPage() {
       <div className="mb-8">
         <h2 className="font-display text-xl font-semibold mb-5">Technology Stack</h2>
         <div className="grid sm:grid-cols-2 gap-4">
-          {stack.map(({ icon: Icon, name, desc, color }) => (
-            <div key={name} className="flex gap-3 p-4 rounded-xl bg-card-surface border border-custom card-hover">
-              <Icon className={`w-5 h-5 ${color} flex-shrink-0 mt-0.5`} />
-              <div>
-                <p className="font-medium text-sm">{name}</p>
-                <p className="text-xs text-muted-custom mt-0.5 leading-relaxed">{desc}</p>
-              </div>
+          {stack.map(({ name, desc }) => (
+            <div key={name} className="p-4 rounded-xl bg-card-surface border border-custom card-hover">
+              <p className="font-medium text-sm">{name}</p>
+              <p className="text-xs text-muted-custom mt-0.5 leading-relaxed">{desc}</p>
             </div>
           ))}
         </div>
@@ -136,7 +126,7 @@ export default function AboutPage() {
             { op: 'DELETE', desc: 'Remove person with confirmation or via MCP', method: 'DELETE /api/persons/:id' },
           ].map(({ op, desc, method }) => (
             <div key={op} className="p-3 rounded-xl bg-card-surface border border-custom">
-              <span className="text-xs font-mono text-accent font-bold">{op}</span>
+              <span className="text-xs font-mono font-bold">{op}</span>
               <p className="text-sm mt-1 mb-1">{desc}</p>
               <code className="text-xs font-mono text-muted-custom">{method}</code>
             </div>

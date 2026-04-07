@@ -10,7 +10,6 @@ import { useSession, signOut } from 'next-auth/react';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
-  { href: '/database', label: 'Database' },
   { href: '/github', label: 'GitHub' },
   { href: '/mcp-setup', label: 'MCP Setup' },
   { href: '/mcp-demo', label: 'MCP Demo' },
@@ -58,7 +57,7 @@ export default function Navbar() {
             <Users className="w-4 h-4 text-white" />
           </div>
           <span className="font-display font-semibold text-sm tracking-wide hidden sm:block">
-            Person<span className="text-accent">.</span>app
+            Person<span className="text-accent">.</span>search
           </span>
         </Link>
 
